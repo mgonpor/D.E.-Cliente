@@ -18,5 +18,5 @@ function pintar_ruta() {
 
 // act3.html
 function pintar_ruta_partida() {
-    
+    console.log("d");
 }
