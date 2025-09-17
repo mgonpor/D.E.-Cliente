@@ -30,3 +30,14 @@ function mostrar_valor(){
 }
 
 // act5.html
+function mostrar_valor_bases(num) {
+    var numDecimal = num;
+    var numBinario = num.toString(2);
+    var numOctal = num.toString(8);
+    var numHexadecimal = num.toString(16);
+
+    console.log("Número en decimal: " + numDecimal);
+    console.log("Número en binario: " + numBinario);
+    console.log("Número en octal: " + numOctal);
+    console.log("Número en hexadecimal: " + numHexadecimal);
+}
