@@ -18,5 +18,15 @@ function pintar_ruta() {
 
 // act3.html
 function pintar_ruta_partida() {
-    console.log("d");
+    var parte1 = "El acceso a la ruta C:\\\\usuario\\ tarda 1'23\", ";
+    var parte2 = " considerado \"lento\" en la actualidad";
+    console.log(parte1 + "algo" + parte2);
 }
+
+// act4.html
+function mostrar_valor(){
+    var valor = 2e-9;
+    console.log("El valor es: " + valor);
+}
+
+// act5.html
