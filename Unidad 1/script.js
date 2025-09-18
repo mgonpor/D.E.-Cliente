@@ -41,3 +41,68 @@ function mostrar_valor_bases(num) {
     console.log("Número en octal: " + numOctal);
     console.log("Número en hexadecimal: " + numHexadecimal);
 }
+
+// act6.html
+function dividir_por_cero_y_suma(num) {
+    var resultado_division = num / 0;
+    var resultado_suma = resultado_division + 23;
+    console.log("Resultado de la división por cero y suma 23: " + resultado_suma);
+}
+
+// act7.html
+function forzar_nan() {
+    var resultado = 0 / 0;
+    console.log("Resultado de forzar NaN: " + resultado);
+}
+
+// act8.html
+function max_num() {
+    var maximo = Number.MAX_VALUE;
+    console.log("El número máximo representable es: " + maximo);
+    var mas_cien = BigInt(maximo) + BigInt(100);
+    console.log("El número máximo más 100 es: " + mas_cien);
+}
+
+// act9.html
+function suma_distintos_tipos() {
+    var numero = 5;
+    var cadena = "10";
+    console.log("Suma de número y cadena: " + (numero + cadena));
+    console.log("Suma de número y cadena convertida a número: " + (numero + Number(cadena)));
+}
+
+// act10.html
+{
+    var var1act10 = 10;
+    var var2act10 = 7;
+}
+
+function llamar_desde_fuera() {
+    console.log("Llamada desde fuera: var1act10 = " + var1act10);
+    console.log("var2act10 = " + var2act10);
+    /* No hay problema en acceder a las variables globales (var fuera de una función)
+        desde aquí.
+        Otra línea*/
+}
+
+// act11.html
+function crear_array() {
+    var array = [1, "dos", 3.0, true, null];
+    console.table(array);
+}
+
+// act12.html
+function bucle_mas_temporizador() {
+    let num = 11;
+
+    let inicio = new Date().getMilliseconds();
+
+    for (let i = 0; i < 10000000; i++) {
+        num +=9;
+    }
+
+    let fin = new Date().getMilliseconds();
+
+    console.log("Valor tras el bucle: " + num);
+    console.log("Ha tardado " + (fin - inicio) + " milisegundos en ejecutarse el bucle");
+}
