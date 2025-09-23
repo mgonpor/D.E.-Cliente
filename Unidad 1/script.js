@@ -106,3 +106,88 @@ function bucle_mas_temporizador() {
     console.log("Valor tras el bucle: " + num);
     console.log("Ha tardado " + (fin - inicio) + " milisegundos en ejecutarse el bucle");
 }
+
+// act13.html
+function mostrar_error(){
+    console.error("Esto es un mensaje de error");
+}
+
+// act14.html
+function confimacion_eliminar(){
+    window.confirm("¿Estás seguro de que quieres eliminar este elemento?");
+}
+
+// act15.html
+function act15(){
+    var salir = false;
+    while(!salir){
+        // pedir nombre
+        var nombre = window.prompt("Introduce tu nombre");
+        // preguntar salir o no del programa 
+        salir = window.confirm("¿Quieres salir del programa?");
+    }
+    //mensaje final en azul
+    console.log("%cFIN DEL PROGRAMA "+ nombre, "color: blue;");
+}
+
+// act16.html
+function act16(){
+    var nombre = window.prompt("Introduce tu nombre");
+    var edad = window.prompt("Introduce tu edad");
+    var ciudad = window.prompt("Introduce tu ciudad");
+    // nos saltamos la direccion
+    var telefono = window.prompt("Introduce tu teléfono");
+
+    if(ciudad == "Mairena del Alcor" || edad ** 5 == telefono){
+        alert("Enhorabuena " + nombre + ", has ganado un premio!");
+    }
+}
+
+// act17.html
+function contar_cifras(){
+    var numero = window.prompt("Introduce un número entero positivo");
+    console.log("El número " + numero + " tiene " + numero.length + " cifras.");
+}
+
+// act18.html
+function clasificacion_edad(){
+    var edad = window.prompt("Introduce tu edad");
+    switch(true){
+        case (edad <= 16):
+            console.log("Niño");
+            break;
+        case (edad > 16 && edad <= 25):
+            console.log("Joven");
+            break;
+        case (edad > 25 && edad <= 60):
+            console.log("Adulto");
+            break;
+        case (edad > 60):
+            console.log("Senior");
+            break;
+        default:
+            console.log("Edad no válida");
+    }
+}
+
+// act19.html
+function adivina_numero(){
+    var numero_aleatorio = Math.floor(Math.random() * 10) + 1; //Numero entre 1 y 10
+    var contador_intentos = 0;
+    do{
+        var intento = window.prompt("Adivina el número entre 1 y 10");
+        contador_intentos++;
+    }while(numero_aleatorio != intento);
+    console.log("¡Has adivinado el número " + numero_aleatorio + " en " + contador_intentos + " intentos!");
+}
+
+// act20.html
+function act20(){
+    var contador_multiplos = 0;
+    for(let i = 8; i <= 100; i++){
+        if(i % 7 == 0){
+            contador_multiplos++;
+        }
+    }
+    console.log("Hay " + contador_multiplos + " múltiplos de 7 entre 8 y 100.");
+}
