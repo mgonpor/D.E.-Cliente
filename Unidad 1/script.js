@@ -132,11 +132,10 @@ function act15(){
 
 // act16.html
 function act16(){
-    var nombre = window.prompt("Introduce tu nombre");
-    var edad = window.prompt("Introduce tu edad");
-    var ciudad = window.prompt("Introduce tu ciudad");
-    // nos saltamos la direccion
-    var telefono = window.prompt("Introduce tu teléfono");
+    var nombre = document.getElementById("nombre").value;
+    var edad = document.getElementById("edad").value;
+    var ciudad = document.getElementById("ciudad").value;
+    var telefono = document.getElementById("telefono").value;
 
     if(ciudad == "Mairena del Alcor" || edad ** 5 == telefono){
         alert("Enhorabuena " + nombre + ", has ganado un premio!");
