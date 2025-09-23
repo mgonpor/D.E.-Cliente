@@ -144,8 +144,13 @@ function act16(){
 
 // act17.html
 function contar_cifras(){
-    var numero = window.prompt("Introduce un número entero positivo");
-    console.log("El número " + numero + " tiene " + numero.length + " cifras.");
+    let numero = Math.abs(prompt("Introduce un número entero positivo"));
+    var contador = 0;
+    while(numero >= 1){
+        numero = Math.floor(numero / 10);
+        contador++;
+    }
+    console.log("El número tiene " + contador + " cifras.");
 }
 
 // act18.html
