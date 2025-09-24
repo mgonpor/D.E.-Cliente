@@ -1,6 +1,6 @@
 // act1.html
 function comprobador_edad() {
-    var edad = window.prompt("Introduce tu edad");
+    let edad = window.prompt("Introduce tu edad");
 
     console.log("Tu edad es: " + edad);
     
@@ -18,23 +18,23 @@ function pintar_ruta() {
 
 // act3.html
 function pintar_ruta_partida() {
-    var parte1 = "El acceso a la ruta C:\\\\usuario\\ tarda 1'23\", ";
-    var parte2 = " considerado \"lento\" en la actualidad";
+    let parte1 = "El acceso a la ruta C:\\\\usuario\\ tarda 1'23\", ";
+    let parte2 = " considerado \"lento\" en la actualidad";
     console.log(parte1 + "algo" + parte2);
 }
 
 // act4.html
 function mostrar_valor(){
-    var valor = 2e-9;
+    let valor = 2e-9;
     console.log("El valor es: " + valor);
 }
 
 // act5.html
 function mostrar_valor_bases(num) {
-    var numDecimal = num;
-    var numBinario = num.toString(2);
-    var numOctal = num.toString(8);
-    var numHexadecimal = num.toString(16);
+    let numDecimal = num;
+    let numBinario = num.toString(2);
+    let numOctal = num.toString(8);
+    let numHexadecimal = num.toString(16);
 
     console.log("Número en decimal: " + numDecimal);
     console.log("Número en binario: " + numBinario);
@@ -44,29 +44,29 @@ function mostrar_valor_bases(num) {
 
 // act6.html
 function dividir_por_cero_y_suma(num) {
-    var resultado_division = num / 0;
-    var resultado_suma = resultado_division + 23;
+    let resultado_division = num / 0;
+    let resultado_suma = resultado_division + 23;
     console.log("Resultado de la división por cero y suma 23: " + resultado_suma);
 }
 
 // act7.html
 function forzar_nan() {
-    var resultado = 0 / 0;
+    let resultado = 0 / 0;
     console.log("Resultado de forzar NaN: " + resultado);
 }
 
 // act8.html
 function max_num() {
-    var maximo = Number.MAX_VALUE;
+    let maximo = Number.MAX_VALUE;
     console.log("El número máximo representable es: " + maximo);
-    var mas_cien = BigInt(maximo) + BigInt(100);
+    let mas_cien = BigInt(maximo) + BigInt(100);
     console.log("El número máximo más 100 es: " + mas_cien);
 }
 
 // act9.html
 function suma_distintos_tipos() {
-    var numero = 5;
-    var cadena = "10";
+    let numero = 5;
+    let cadena = "10";
     console.log("Suma de número y cadena: " + (numero + cadena));
     console.log("Suma de número y cadena convertida a número: " + (numero + Number(cadena)));
 }
@@ -87,7 +87,7 @@ function llamar_desde_fuera() {
 
 // act11.html
 function crear_array() {
-    var array = [1, "dos", 3.0, true, null];
+    let array = [1, "dos", 3.0, true, null];
     console.table(array);
 }
 
@@ -119,7 +119,7 @@ function confimacion_eliminar(){
 
 // act15.html
 function act15(){
-    var salir = false;
+    let salir = false;
     while(!salir){
         // pedir nombre
         var nombre = window.prompt("Introduce tu nombre");
@@ -132,10 +132,10 @@ function act15(){
 
 // act16.html
 function act16(){
-    var nombre = document.getElementById("nombre").value;
-    var edad = document.getElementById("edad").value;
-    var ciudad = document.getElementById("ciudad").value;
-    var telefono = document.getElementById("telefono").value;
+    let nombre = document.getElementById("nombre").value;
+    let edad = document.getElementById("edad").value;
+    let ciudad = document.getElementById("ciudad").value;
+    let telefono = document.getElementById("telefono").value;
 
     if(ciudad == "Mairena del Alcor" || edad ** 5 == telefono){
         alert("Enhorabuena " + nombre + ", has ganado un premio!");
@@ -145,7 +145,7 @@ function act16(){
 // act17.html
 function contar_cifras(){
     let numero = Math.abs(prompt("Introduce un número entero positivo"));
-    var contador = 0;
+    let contador = 0;
     while(numero >= 1){
         numero = Math.floor(numero / 10);
         contador++;
@@ -155,9 +155,9 @@ function contar_cifras(){
 
 // act18.html
 function clasificacion_edad(){
-    var edad = window.prompt("Introduce tu edad");
-    switch(true){
-        case (edad <= 16):
+//    var edad = Number(window.prompt("Introduce tu edad"));
+/*     switch(true){
+        case (edad >= 0 && edad <= 16):
             console.log("Niño");
             break;
         case (edad > 16 && edad <= 25):
@@ -170,16 +170,42 @@ function clasificacion_edad(){
             console.log("Senior");
             break;
         default:
-            console.log("Edad no válida");
+            console.error("Edad no válida");
+    } */
+    let edad = document.getElementById("edad").value;
+    switch(true){
+        case (edad >= 0 && edad <= 16):
+            pintar_mesaje("Niño", true);
+            break;
+        case (edad > 16 && edad <= 25):
+            pintar_mesaje("Joven", true);
+            break;
+        case (edad > 25 && edad <= 60):
+            pintar_mesaje("Adulto", true);
+            break;
+        case (edad > 60):
+            pintar_mesaje("Senior", true);
+            break;
+        default:
+            pintar_mesaje("Error! Edad no válida", false);
+    }
+}
+function pintar_mesaje(mensaje, isOk){
+    let aviso = document.getElementById("aviso");
+    aviso.textContent = mensaje;
+    if(isOk){
+        aviso.style.color = "green";
+    }else{
+        aviso.style.color = "red";
     }
 }
 
 // act19.html
 function adivina_numero(){
-    var numero_aleatorio = Math.floor(Math.random() * 10) + 1; //Numero entre 1 y 10
-    var contador_intentos = 0;
+    let numero_aleatorio = Math.trunc(Math.random() * 10) + 1; //Numero entre 1 y 10
+    let contador_intentos = 0;
     do{
-        var intento = window.prompt("Adivina el número entre 1 y 10");
+        var intento = Number(window.prompt("Adivina el número entre 1 y 10"));
         contador_intentos++;
     }while(numero_aleatorio != intento);
     console.log("¡Has adivinado el número " + numero_aleatorio + " en " + contador_intentos + " intentos!");
@@ -187,11 +213,15 @@ function adivina_numero(){
 
 // act20.html
 function act20(){
-    var contador_multiplos = 0;
-    for(let i = 8; i <= 100; i++){
-        if(i % 7 == 0){
+    let n = Number(prompt("Introduce un número para buscar sus múltiplos entre n+1 y 100"));
+    let contador_multiplos = 0;
+    const MAX = 100;
+    
+    for(let i = n+1; i < MAX; i++){
+        if(i % n == 0){
             contador_multiplos++;
         }
     }
-    console.log("Hay " + contador_multiplos + " múltiplos de 7 entre 8 y 100.");
+    
+    console.log("Hay " + contador_multiplos + " múltiplos de "+n+" entre "+(n+1)+" y 100.");
 }
