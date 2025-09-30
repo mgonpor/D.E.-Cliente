@@ -105,3 +105,97 @@ function resolver_ecuacion_2grado(){
         console.log("La ecuación tiene dos soluciones reales: x1 = " + x1 + ", x2 = " + x2);
     }
 }
+
+// Ejer 4
+function calcular_letra_DNI() {
+    let dni = Number(prompt("Introduce tu número de DNI (sin letra):"));
+    if (isNaN(dni) || dni < 0) {
+        alert("Por favor, introduce un número válido (entero no negativo).");
+        return;
+    }
+    let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+    let resto = dni % 23;
+    let letra = letras.charAt(resto);
+    console.log("La letra correspondiente al DNI " + dni + " es: " + letra);
+}
+
+// Ejer 5
+function menu_areas(){
+    do{
+        var opcion = Number(prompt("Calculadora de áreas:\n1. Área de un triángulo\n2. Área de un rectángulo\n" +
+            "3. Área de un círculo\n4. Salir\nElige una opción (1-4):"));
+        switch(opcion){
+            case 1:
+                let base = Number(prompt("Introduce la base del triángulo:"));
+                let altura = Number(prompt("Introduce la altura del triángulo:"));
+                if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
+                    alert("Por favor, introduce valores válidos (números positivos).");
+                }
+                else{
+                    let area_triangulo = (base * altura) / 2;
+                    console.log("El área del triángulo es: " + area_triangulo.toFixed(2));
+                }
+                break;
+            case 2:
+                let largo = Number(prompt("Introduce el largo del rectángulo:"));
+                let ancho = Number(prompt("Introduce el ancho del rectángulo:"));
+                if (isNaN(largo) || isNaN(ancho) || largo <= 0 || ancho <= 0) {
+                    alert("Por favor, introduce valores válidos (números positivos).");
+                }
+                else{
+                    let area_rectangulo = largo * ancho;
+                    console.log("El área del rectángulo es: " + area_rectangulo.toFixed(2));
+                }
+                break;
+            case 3:
+                let radio = Number(prompt("Introduce el radio del círculo:"));
+                if (isNaN(radio) || radio <= 0) {
+                    alert("Por favor, introduce un valor válido (número positivo).");
+                }
+                else{
+                    let area_circulo = Math.PI * radio * radio;
+                    console.log("El área del círculo es: " + area_circulo.toFixed(2));
+                }
+                break;
+            case 4:
+                console.log("Saliendo del menú de áreas.");
+                break;
+            default:
+                alert("Opción no válida. Por favor, elige una opción entre 1 y 4.");
+        }
+    }while(opcion != 4);
+}
+
+// Ejer 6
+function ejer6_for(){
+    console.log("Números impares no múltiplos de 3 ni 7 entre 1 y 100:");
+    for(let i=1; i<=100; i+=2){
+        if(i % 3 != 0 && i % 7 != 0){
+            console.log(i);
+        }
+    }
+}
+
+function ejer6_while(){
+    console.log("Números impares no múltiplos de 3 ni 7 entre 1 y 100:");
+    let i = 1;
+    while(i <= 100){
+        if(i % 3 != 0 && i % 7 != 0){
+            console.log(i);
+        }
+        i += 2;
+    }
+}
+
+function ejer6_foreach(){
+    console.log("Números impares no múltiplos de 3 ni 7 entre 1 y 100:");
+    let numeros = [];
+    for(let i=1; i<=100; i+=2){
+        numeros.push(i);
+    }
+    numeros.forEach(e => {
+        if(e % 3 != 0 && e % 7 != 0){
+            console.log(e);
+        }
+    });
+}
