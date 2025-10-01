@@ -64,6 +64,7 @@ function tirarDados(){
         var dado1 = Math.floor(Math.random() * NUMERODECARAS) + 1;
         var dado2 = Math.floor(Math.random() * NUMERODECARAS) + 1;
         numeroTiradas++;
+        puntosTotales += dado1 + dado2;
         suma += dado1 + dado2;
         console.log("El jugador "+nombre+" ha obtenido "+(dado1+dado2)+" puntos en esta tirada. "+dado1+ " + "+dado2);
         if(dado1 == dado2){
@@ -82,7 +83,6 @@ function tirarDados(){
     if(suma < minimoPuntos){
         minimoPuntos = suma;
     }
-    puntosTotales += dado1 + dado2;
     console.log("Has acabado con "+suma+" puntos.");
     console.log("--- FIN DE TURNO ---")
     return suma;
