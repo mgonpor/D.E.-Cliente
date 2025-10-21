@@ -32,29 +32,75 @@ function ejercicio1(): void{
 
 }
 
+/* 
+------------------------------------------------------------------------
+*/
+
+//Helpers (comunes para todo el boletin)
+function $inputvalue(id: string) : string{
+    const input = document.getElementById(id)! as HTMLInputElement;
+    var result = "";
+    if (input){
+        result = input.value;           // value LEE
+    }
+    return result;
+}
+function $writeNode(id: string, msg: string) : void{
+    const node = document.getElementById(id) as HTMLElement;
+    if (node) {
+        node.textContent = msg;         // textContent ESCRIBE
+    }
+}
+
+/* 
+------------------------------------------------------------------------
+*/
+
 //Ejercicio 2
 function ejercicio2(): void{
     // let expReg: RegExp = /lo_que_sea/;
-    let expReg: RegExp = new RegExp("[0-9]");
+    let expReg: RegExp = new RegExp("[^\s@]+@[^\s@]+\.[^\s@]+$");
 
-    //Nos aseguramos que no es null (no se puede almacenar en HTMLInputElement)
     if(document.getElementById("email")){
-        let email: HTMLInputElement = document.getElementById("email") as HTMLInputElement;
-        
-        // Creamos span
-        let mensajeOK = document.createElement('span');
-        if(expReg.test(email.value)){
-            mensajeOK.textContent= "Email correcto";
-            mensajeOK.style.color = "green";
+        if(expReg.test($inputvalue("email"))){
+            $writeNode("ok", "Email correcto");
+            $writeNode("error", "");
         }else{
-            mensajeOK.textContent= "Introduce un correo válido.";
-            mensajeOK.style.color = "red";
-        }
-        // Insertamos span
-        let div2 = document.getElementById("ejercicio2");
-        if(div2){
-            div2.appendChild(mensajeOK);
+            $writeNode("ok", "");
+            $writeNode("error", "Formato de email incorrecto");
         }
     }
-    
+}
+
+/* 
+------------------------------------------------------------------------
+*/
+
+function $redimensionarVentana(width: number, heigth: number): void{
+    window.resizeTo(window.screen.availWidth*width/100, window.screen.availHeight*heigth/100);
+}
+
+/* 
+------------------------------------------------------------------------
+*/
+
+//Ejercicio 3
+// window.open('http://localhost:52330/Unidad%202/Boletin1/index.html', 'miVentana', 'resizable=yes');
+// SOLO FUNCIONA resizeTo() en ventanas abiertas con window.open()
+function ejercicio3(){
+    let ancho: number | null  = Number(prompt("Indica el porcentaje de ancho de la ventana: "));
+    let alto: number | null  = Number(prompt("Indica el porcentaje de alto de la ventana: "));
+
+    if(ancho && alto){
+        console.log("El usuario rellenó los prompts.");
+        if(confirm("¿Está seguro? \nAncho " + ancho + "% y alto " + alto + "%: ")){
+            console.log("El usuario confirmó.");
+            $redimensionarVentana(ancho, alto);
+            console.log("La ventana se redimensionó.");
+        }else{
+            console.log("El usuario NO confirmó.");
+        }
+    }
+
+    console.log("Se acabó la función.");
 }
