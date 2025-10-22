@@ -13,6 +13,8 @@ window.onload = (): void => {
         let colorAleatorio: number = Math.floor(Math.random() * colores.length);
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
+
+    saludo_tardio();
 }
 
 /* 
@@ -64,10 +66,12 @@ function ejercicio2(): void{
     if(document.getElementById("email")){
         if(expReg.test($inputvalue("email"))){
             $writeNode("ok", "Email correcto");
+            setTimeout(() => $writeNode("ok", ""), 5000);
             $writeNode("error", "");
         }else{
             $writeNode("ok", "");
             $writeNode("error", "Formato de email incorrecto");
+            setTimeout(() => $writeNode("error", ""), 5000);
         }
     }
 }
@@ -87,9 +91,11 @@ function $redimensionarVentana(width: number, heigth: number): void{
 //Ejercicio 3
 // window.open('http://localhost:52330/Unidad%202/Boletin1/index.html', 'miVentana', 'resizable=yes');
 // SOLO FUNCIONA resizeTo() en ventanas abiertas con window.open()
-function ejercicio3(){
+function ejercicio3(): void{
     let ancho: number | null  = Number(prompt("Indica el porcentaje de ancho de la ventana: "));
     let alto: number | null  = Number(prompt("Indica el porcentaje de alto de la ventana: "));
+
+    // let ventanaNueva = window.open("https:www.google.es", "resizable=yes")
 
     if(ancho && alto){
         console.log("El usuario rellenó los prompts.");
@@ -103,4 +109,39 @@ function ejercicio3(){
     }
 
     console.log("Se acabó la función.");
+}
+
+//Ejercicio 4
+function ejercicio4(): void{
+    const regex = new RegExp("^https:\/\/")
+    const url = $inputvalue("enlace");
+    if(regex.test(url)){
+        window.location.href= url;
+    }else{
+        $writeNode("error2", "Introduzca una url válida.")
+        setTimeout(() => $writeNode("error2", ""), 5000);
+    }
+}
+
+//Ejercicio 5
+function ejercicio5(): void{
+    window.open("https://ieslosalcores.org/", "_blank");
+}
+
+//Ejercicio 6
+// Linea 17
+function saludo_tardio(): void{
+    setTimeout((): void => {
+        console.log("¡Hola! Perdón por la tardanza.");
+    }, 5000);
+}
+
+
+//Ejercicio 7
+function info_navegador(): void{
+    let info: string = "Nombre: " + navigator.appName + 
+    "\nVersión: " + navigator.appVersion + 
+    "\nPlataforma: " + navigator.platform + 
+    "\nConexión: " /*+ Navigator.connection*/;
+    $writeNode("info_nav", info);
 }

@@ -11,6 +11,7 @@ window.onload = function () {
         var colorAleatorio = Math.floor(Math.random() * colores.length);
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
+    saludo_tardio();
 };
 /*
 ------------------------------------------------------------------------
@@ -52,11 +53,13 @@ function ejercicio2() {
     if (document.getElementById("email")) {
         if (expReg.test($inputvalue("email"))) {
             $writeNode("ok", "Email correcto");
+            setTimeout(function () { return $writeNode("ok", ""); }, 5000);
             $writeNode("error", "");
         }
         else {
             $writeNode("ok", "");
             $writeNode("error", "Formato de email incorrecto");
+            setTimeout(function () { return $writeNode("error", ""); }, 5000);
         }
     }
 }
@@ -75,6 +78,7 @@ function $redimensionarVentana(width, heigth) {
 function ejercicio3() {
     var ancho = Number(prompt("Indica el porcentaje de ancho de la ventana: "));
     var alto = Number(prompt("Indica el porcentaje de alto de la ventana: "));
+    // let ventanaNueva = window.open("https:www.google.es", "resizable=yes")
     if (ancho && alto) {
         console.log("El usuario rellenó los prompts.");
         if (confirm("¿Está seguro? \nAncho " + ancho + "% y alto " + alto + "%: ")) {
@@ -87,4 +91,35 @@ function ejercicio3() {
         }
     }
     console.log("Se acabó la función.");
+}
+//Ejercicio 4
+function ejercicio4() {
+    var regex = new RegExp("^https:\/\/");
+    var url = $inputvalue("enlace");
+    if (regex.test(url)) {
+        window.location.href = url;
+    }
+    else {
+        $writeNode("error2", "Introduzca una url válida.");
+        setTimeout(function () { return $writeNode("error2", ""); }, 5000);
+    }
+}
+//Ejercicio 5
+function ejercicio5() {
+    window.open("https://ieslosalcores.org/", "_blank");
+}
+//Ejercicio 6
+// Linea 17
+function saludo_tardio() {
+    setTimeout(function () {
+        console.log("¡Hola! Perdón por la tardanza.");
+    }, 5000);
+}
+//Ejercicio 7
+function info_navegador() {
+    var info = "Nombre: " + navigator.appName +
+        "\nVersión: " + navigator.appVersion +
+        "\nPlataforma: " + navigator.platform +
+        "\nConexión: " /*+ Navigator.connection*/;
+    $writeNode("info_nav", info);
 }
