@@ -109,7 +109,7 @@ function ejercicio5() {
     window.open("https://ieslosalcores.org/", "_blank");
 }
 //Ejercicio 6
-// Linea 17
+// Linea 18
 function saludo_tardio() {
     setTimeout(function () {
         console.log("¡Hola! Perdón por la tardanza.");
@@ -123,3 +123,55 @@ function info_navegador() {
         "\nConexión: " /*+ Navigator.connection*/;
     $writeNode("info_nav", info);
 }
+// -----------------------------------------------------------------------------------------
+//Ejemplo de funciones normales y su definición corta (flecha)
+function suma1(a, b) {
+    return a + b;
+}
+var suma2 = function (a, b) { return a + b; };
+suma1(5, 5);
+suma2(5, 5);
+// Uso de funciones flecha predefinidas en JS
+var arrayPruebas = [2, 4, 6, 8, 10];
+// Filter
+var arrayMayorCinco1 = [];
+for (var i = 0; i < arrayPruebas.length; i++) {
+    if (arrayPruebas[i] > 5) {
+        arrayMayorCinco1.push(arrayPruebas[i]);
+    }
+}
+var arrayMayorCinco2 = arrayPruebas.filter(function (data) { return data > 5; });
+// Map
+var arrayDoble1 = [];
+for (var i = 0; i < arrayPruebas.length; i++) {
+    arrayDoble1.push(arrayPruebas[i] * 2);
+}
+var arrayDoble2 = arrayPruebas.map(function (data) { return data * 2; });
+var arrayMayor5YDoble = arrayPruebas
+    .filter(function (data) { return data > 5; })
+    .map(function (data) { return data * 2; });
+// Reduce
+var totalSuma = arrayPruebas.reduce(function (acumulador, data) { return acumulador + data; }, 0 /* valor inicial acumulador */);
+// Foreach
+arrayPruebas.forEach(function (data, i) { return console.log("Este es el elemento " + (i + 1) + ": " + data); });
+// Some
+var hayMayorQue8 = arrayPruebas.some(function (data) { return data > 8; });
+//true
+// Every
+var todosMayorQue8 = arrayPruebas.every(function (data) { return data > 8; });
+//false
+//Definir una función propia donde uno de sus parámetros sea una función
+function resuelveOperacion(callback, a, b) {
+    console.log("Todavia no");
+    var res = callback(a, b);
+    console.log("Ya sí");
+    return res;
+}
+// LO IMPORTANTE ES CUANDO SE EJECUTA LA FUNCION CALLBACK
+resuelveOperacion(function (a, b) { return a + b; }, 10, 5);
+resuelveOperacion(function (a, b) { return a - b; }, 10, 5);
+resuelveOperacion(function (a, b) { return a * b; }, 10, 5);
+resuelveOperacion(function (a, b) { return a / b; }, 10, 5);
+// -----------------------------------------------------------------------------------------
+//Ejercicio 8
+//Linea 17

@@ -14,6 +14,7 @@ window.onload = (): void => {
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
 
+
     saludo_tardio();
 }
 
@@ -129,7 +130,7 @@ function ejercicio5(): void{
 }
 
 //Ejercicio 6
-// Linea 17
+// Linea 18
 function saludo_tardio(): void{
     setTimeout((): void => {
         console.log("¡Hola! Perdón por la tardanza.");
@@ -145,3 +146,70 @@ function info_navegador(): void{
     "\nConexión: " /*+ Navigator.connection*/;
     $writeNode("info_nav", info);
 }
+
+// -----------------------------------------------------------------------------------------
+//Ejemplo de funciones normales y su definición corta (flecha)
+function suma1(a: number, b: number): number{
+    return a+b;
+}
+const suma2 = (a: number, b: number): number => a+b;
+suma1(5,5);
+suma2(5,5);
+
+// Uso de funciones flecha predefinidas en JS
+const arrayPruebas = [2,4,6,8,10];
+
+// Filter
+const arrayMayorCinco1 = [];
+for(let i=0; i< arrayPruebas.length; i++){
+    if(arrayPruebas[i] > 5){
+        arrayMayorCinco1.push(arrayPruebas[i]);
+    }
+}
+
+const arrayMayorCinco2: number[] = arrayPruebas.filter(data => data > 5);
+
+// Map
+const arrayDoble1 = [];
+
+for(let i=0; i< arrayPruebas.length; i++){
+    arrayDoble1.push(arrayPruebas[i]*2);
+}
+
+const arrayDoble2: number[] = arrayPruebas.map(data => data*2);
+
+const arrayMayor5YDoble: number[] = arrayPruebas
+    .filter(data => data > 5)
+    .map(data => data*2);
+
+// Reduce
+const totalSuma: number = arrayPruebas.reduce((acumulador, data) => acumulador + data, 0 /* valor inicial acumulador */ );
+
+// Foreach
+arrayPruebas.forEach((data, i) => console.log("Este es el elemento " + (i+1) + ": " + data));
+
+// Some
+const hayMayorQue8: boolean = arrayPruebas.some(data => data > 8);
+//true
+
+// Every
+const todosMayorQue8: boolean = arrayPruebas.every(data => data > 8);
+//false
+
+//Definir una función propia donde uno de sus parámetros sea una función
+function resuelveOperacion(callback: (a:number, b:number) => number, a: number, b: number): number{
+    console.log("Todavia no");
+    const res = callback(a,b);
+    console.log("Ya sí");
+    return res;
+}
+// LO IMPORTANTE ES CUANDO SE EJECUTA LA FUNCION CALLBACK
+resuelveOperacion((a, b)=> a+b, 10, 5);
+resuelveOperacion((a, b)=> a-b, 10, 5);
+resuelveOperacion((a, b)=> a*b, 10, 5);
+resuelveOperacion((a, b)=> a/b, 10, 5);
+
+// -----------------------------------------------------------------------------------------
+
+//Ejercicio 8
+//Linea 17
