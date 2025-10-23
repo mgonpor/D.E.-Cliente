@@ -14,7 +14,7 @@ window.onload = (): void => {
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
 
-
+    pagina_cargada();
     saludo_tardio();
 }
 
@@ -213,3 +213,13 @@ resuelveOperacion((a, b)=> a/b, 10, 5);
 
 //Ejercicio 8
 //Linea 17
+function pagina_cargada(){
+    alert("La página ha terminado de cargar.");
+}
+
+//Ejercicio 9
+// window.onbeforeunload = (e: BeforeUnloadEvent): string => {
+//     e.preventDefault();
+//     e.returnValue = '';
+//     return "¿Estás seguro de que quieres salir?";
+// }
