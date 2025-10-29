@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="scriptDOM.js"></script>
+        <title>Boletin 2 DOM</title>
+    </head>
+    <body>
+        <h1 id="titulo">Hola Mundo</h1>
+        <main>
+            <div class="ejercicio">
+                <h3>Ejer 1</h3>
+                <button onclick="cambiar_titulo()">Cambiar titulo</button>
+                <hr>
+            </div>
+            <div class="ejercicio">
+                <h3>Ejer 2</h3>
+                <p>Elige entre oscuro y claro</p>
+                <button onclick="cambiar_fondo()">Cambiar fondo</button>
+                <hr>
+            </div>
+            <div class="ejercicio">
+                <h3>Ejer 3</h3>
+                <form method="get" action="">
+                    <label for="edad">Edad: </label>
+                    <input type="number" id="edad" placeholder="34"/>
+                </form>
+                <button onclick="analiza_edad()">Enviar</button>
+                <ol id="res_edad"></ol>
+                <hr>
+            </div>
+            <div class="ejercicio">
+                <h3>Ejer 4</h3>
+                <p>Saludo</p>
+                <select id="colores" onchange="cambiar_color()">
+                    <option value="black">Negro</option>
+                    <option value="white">Blanco</option>
+                    <option value="green">Verde</option>
+                    <option value="red">Rojo</option>
+                    <option value="blue">Azul</option>
+                </select>
+                <button onclick="saludo()">Iniciar</button>
+                <p id="saludo"></p>
+                <hr>
+            </div>
+        </main>
+    </body>
+</html>
