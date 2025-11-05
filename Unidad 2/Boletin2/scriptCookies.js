@@ -21,20 +21,24 @@ function ejercicio1() {
     // Escribir cookie
     var cookieIdioma = "user=Miguel";
     var cookieCurrency = "currency=EUR";
+    var cookieLanguage = "lang=es-ES";
     document.cookie = "";
     document.cookie = cookieIdioma;
     document.cookie = cookieCurrency;
+    document.cookie = cookieLanguage;
     // Leer cookies
     var arrayCookies = document.cookie.split(";");
     arrayCookies.forEach(function (cookie) { return console.log("Cookie: " + cookie); });
+    var cookieAConsultar = prompt("Que cookie quieres consultar?");
     // Leer una en concreto (user)
     var valor = "";
     for (var i = 0; i < arrayCookies.length; i++) {
         var claveValor = arrayCookies[i].split("=");
-        if (claveValor[0] == "user") {
+        console.log(claveValor);
+        if (claveValor[0].trim() == cookieAConsultar) {
             valor = claveValor[1];
         }
     }
     var p = document.getElementById("result1");
-    p.textContent = valor ? "La cookie user contiene: " + valor : "No existe esa cookie.";
+    p.textContent = valor ? "La cookie " + cookieAConsultar + " contiene: " + valor : "No existe esa cookie.";
 }

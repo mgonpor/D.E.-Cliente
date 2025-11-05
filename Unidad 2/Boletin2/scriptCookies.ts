@@ -25,23 +25,28 @@ function ejercicio1(): void {
     // Escribir cookie
     let cookieIdioma: string = "user=Miguel";
     let cookieCurrency: string = "currency=EUR";
+    let cookieLanguage: string = "lang=es-ES";
     document.cookie = "";
     document.cookie = cookieIdioma;
     document.cookie = cookieCurrency;
+    document.cookie = cookieLanguage;
 
     // Leer cookies
     let arrayCookies: string[] = document.cookie.split(";");
     arrayCookies.forEach(cookie => console.log("Cookie: " + cookie));
 
+    let cookieAConsultar: string = prompt("Que cookie quieres consultar?") as string;
+
     // Leer una en concreto (user)
     let valor: string = "";
     for (let i = 0; i < arrayCookies.length; i++) {
         let claveValor: string[] = arrayCookies[i].split("=");
-        if(claveValor[0] == "user"){
+        console.log(claveValor);
+        if(claveValor[0].trim() == cookieAConsultar){
             valor = claveValor[1];
         }
     }
 
     let p: HTMLParagraphElement = document.getElementById("result1") as HTMLParagraphElement;
-    p.textContent = valor ? "La cookie user contiene: " + valor : "No existe esa cookie.";
+    p.textContent = valor ? "La cookie " + cookieAConsultar + " contiene: " + valor : "No existe esa cookie.";
 }
