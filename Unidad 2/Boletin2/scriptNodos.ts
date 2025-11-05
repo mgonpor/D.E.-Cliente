@@ -14,6 +14,7 @@ window.onload = (): void => {
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
     document.body.style.backgroundColor = "white";
+    ejercicio2();
 }
 
 /*
@@ -85,3 +86,22 @@ function ejercicio1(): void {
 }
 
 // Ejercicio 2
+let array_alumnos: Array<string> = ["Miguel", "Raquel", "Emilio", "Vanesa"];
+
+function ejercicio2(): void {
+    let div2: HTMLDivElement = document.getElementById("ejercicio2") as HTMLDivElement;
+
+    // Color DIV
+    let colorAleatorio: number = Math.floor(Math.random() * colores.length);
+    div2.style.backgroundColor = colores[colorAleatorio];
+    div2.style.display = "flex";
+
+    // Cuadrícula con nombres
+    for (let i = 0; i < array_alumnos.length; i++) {
+        let justCreated: HTMLDivElement = document.createElement("div");
+        justCreated.style.border = "1px solid black";
+        justCreated.style.padding = "10px";
+        justCreated.style.margin = "10px";
+        div2.appendChild(justCreated).textContent = array_alumnos[i];
+    }
+}

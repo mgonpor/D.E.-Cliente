@@ -12,6 +12,7 @@ window.onload = function () {
         ejercicios[i].style.backgroundColor = colores[colorAleatorio];
     }
     document.body.style.backgroundColor = "white";
+    ejercicio2();
 };
 /*
 ------------------------------------------------------------------------
@@ -82,3 +83,19 @@ function ejercicio1() {
     }
 }
 // Ejercicio 2
+var array_alumnos = ["Miguel", "Raquel", "Emilio", "Vanesa"];
+function ejercicio2() {
+    var div2 = document.getElementById("ejercicio2");
+    // Color DIV
+    var colorAleatorio = Math.floor(Math.random() * colores.length);
+    div2.style.backgroundColor = colores[colorAleatorio];
+    div2.style.display = "flex";
+    // Cuadrícula con nombres
+    for (var i = 0; i < array_alumnos.length; i++) {
+        var justCreated = document.createElement("div");
+        justCreated.style.border = "1px solid black";
+        justCreated.style.padding = "10px";
+        justCreated.style.margin = "10px";
+        div2.appendChild(justCreated).textContent = array_alumnos[i];
+    }
+}
