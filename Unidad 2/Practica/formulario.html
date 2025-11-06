@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <script src="practica.js"></script>
+</head>
+<body>
+    <h1>Rellena datos</h1>
+    <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre"><br>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" id="apellidos"><br>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad"><br>
+        <label for="telefono">Telefono</label>
+        <input type="text" name="telefono" id="telefono"><br>
+        <label for="fecha_nac">Fecha nacimiento</label>
+        <input type="date" name="fecha_nac" id="fecha_nac"><br>
+        <label for="url">Url red social</label>
+        <input type="url" name="url" id="url"><br>
+        <label for="opciones">Opciones:</label>
+        <select name="opciones" id="opciones">
+            <option value="a">Nombre y año</option>
+            <option value="b">Redirigir con búsqueda</option>
+            <option value="c">Calcular edad</option>
+            <option value="d">Almacenar cookies</option>
+        </select>
+        <div style="background-color: lightgrey;">
+            <br>
+            <p id="result">Sin contenido</p>
+            <br>
+        </div>
+    </form>
+    <button onclick="menu()">Enviar</button>
+</body>
+</html>
