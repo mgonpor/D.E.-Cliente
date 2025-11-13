@@ -67,4 +67,4 @@ function reloj() {
     var ahora = new Date();
     reloj.textContent = ahora.getHours() + ":" + ahora.getMinutes() + ":" + ahora.getSeconds();
 }
-setInterval(reloj, 1000);
+window.onload = function () { return setInterval(reloj, 1000); };
