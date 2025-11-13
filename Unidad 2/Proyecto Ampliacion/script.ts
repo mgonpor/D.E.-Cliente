@@ -45,8 +45,15 @@ function validarEquipos(): void {
     let visitante: string = $getSelectById("visitante").value;
     let parrafo: HTMLParagraphElement = document.getElementById("validacionEquipos") as HTMLParagraphElement;
 
+    let golesLocal: string = (document.getElementById("golesLocal") as HTMLInputElement).value;
+    let golesVisitante: string = (document.getElementById("golesVisitante") as HTMLInputElement).value;
+
     if(local === visitante){
         parrafo.textContent = "¡Los equipos son iguales! Cámbialo antes de enviarlo.";
+        parrafo.style.color = "red";
+    }else if(golesLocal == null || golesVisitante == null ||
+        golesLocal == "" || golesVisitante == ""){
+        parrafo.textContent = "Introduce valores de goles válidos.";
         parrafo.style.color = "red";
     }else{
         parrafo.textContent = "Creando partido.";
@@ -61,24 +68,50 @@ function nuevoPartido(local: string, visitante: string): void {
     let selectLocal: HTMLSelectElement = $getSelectById("local");
     let selectVisitante: HTMLSelectElement = $getSelectById("visitante");
 
-    let equipoLocal: (string|number)[] = $buscarEquipo(selectLocal.value);
-    let equipoVisitante: (string|number)[] = $buscarEquipo(selectVisitante.value);
+    let indiceEquipoLocal: number = $buscarIndiceEquipo(selectLocal.value);
+    let indiceEquipoVisitante: number = $buscarIndiceEquipo(selectVisitante.value);
+
+    let equipoLocal: (string|number)[] = clasificacion[indiceEquipoLocal];
+    let equipoVisitante: (string|number)[] = clasificacion[indiceEquipoVisitante];
 
     // Actualizar equipos
     let golesLocal: number = (document.getElementById("golesLocal") as HTMLInputElement).valueAsNumber;
     let golesVisitante: number = (document.getElementById("golesVisitante") as HTMLInputElement).valueAsNumber;
 
-        // Partidos
+    // Goles
+    equipoLocal[6] = Number(equipoLocal[6]) + golesLocal;
+    equipoLocal[7] = Number(equipoLocal[7]) + golesVisitante;
+    equipoVisitante[6] = Number(equipoVisitante[6]) + golesVisitante;
+    equipoVisitante[7] = Number(equipoVisitante[7]) + golesLocal;
 
-        // Goles
-
-        // Puntos
+    //Partidos Y Puntos
+        // jugados
+    equipoLocal[2] = Number(equipoLocal[2]) + 1;
+    equipoVisitante[2] = Number(equipoVisitante[2]) + 1;
+        // ganados perdidos empatados
+    if(golesLocal > golesVisitante){
+        equipoLocal[3] = Number(equipoLocal[3]) + 1;
+        equipoVisitante[5] = Number(equipoVisitante[5]) + 1;
+    }else if(golesLocal < golesVisitante){
+        equipoLocal[5] = Number(equipoLocal[5]) + 1;
+        equipoVisitante[3] = Number(equipoVisitante[3]) + 1;
+    }else{
+        equipoLocal[4] = Number(equipoLocal[4]) + 1;
+        equipoVisitante[4] = Number(equipoVisitante[4]) + 1;
+    }
 
     // Meter nuevo equipo en clasificacion
-    $actualizarEquipo(equipoLocal);     // SIN COMPLETAR
-    $actualizarEquipo(equipoVisitante);
+    $actualizarEquipo(indiceEquipoLocal, equipoLocal);
+    $actualizarEquipo(indiceEquipoVisitante, equipoVisitante);
 
-    // Actualizar pagina
+    // Calcular PUNTOS equipos
+    $actualizarPuntos();
+
+    // Reordenar clasificacion
+    $ordenarEquipos();
+
+    // Actualizar tabla clasificacion
+    cargarClasificacion();
 }
 
 // HELPERS
@@ -103,14 +136,36 @@ function $getSelectById(id: string): HTMLSelectElement {
     return document.getElementById(id) as HTMLSelectElement;
 }
 
-function $buscarEquipo(nombre: string): (string|number)[] {
+function $buscarIndiceEquipo(nombre: string): number {
     for(let i = 0; i < clasificacion.length; i++) {
         if(clasificacion[i][0] === nombre){
-            return clasificacion[i];
+            return i;
         }
     }
 }
 
-function $actualizarEquipo(equipo: (string|number)[]): void {
+function $actualizarPuntos(): void {
+    for(let i = 0; i < clasificacion.length; i++) {
+        clasificacion[i][1] = (Number(clasificacion[i][3]) * 3) + (Number(clasificacion[i][4]));
+    }
+}
 
+function $actualizarEquipo(indice: number, equipo: (string|number)[]): void {
+    clasificacion[indice] = equipo;
+}
+
+function $ordenarEquipos(): void {
+    clasificacion.sort( (a: (string|number)[], b: (string|number)[]): number => {
+        let puntosA: number = Number(a[1]);
+        let puntosB: number = Number(b[1]);
+        if(puntosA !== puntosB) return puntosB - puntosA;
+
+        // Empatan a puntos
+        let diffA: number = Number(a[6]) - Number(a[7]);
+        let diffB: number = Number(b[6]) - Number(b[7]);
+        if(diffA !== diffB) return diffB - diffA;
+
+        // Empatan a diferencia de goles
+        return Number(b[6]) - Number(a[6]);
+    })
 }

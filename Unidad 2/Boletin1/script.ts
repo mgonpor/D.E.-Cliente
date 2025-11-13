@@ -39,7 +39,7 @@ function ejercicio1(): void{
 ------------------------------------------------------------------------
 */
 
-//Helpers (comunes para todo el boletin)
+//Helpers (comunes para todoel boletin)
 function $inputvalue(id: string) : string{
     const input = document.getElementById(id)! as HTMLInputElement;
     var result = "";
