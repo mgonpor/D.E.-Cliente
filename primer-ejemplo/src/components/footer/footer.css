@@ -1,0 +1,60 @@
+footer {
+  background-color: #2d3748;
+  color: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+}
+
+footer > div {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 15px;
+  line-height: 1.5;
+}
+
+#info {
+  width: 33%;
+}
+
+#info p {
+  margin: 6px 0 0 0;
+}
+
+#central {
+  width: 33%;
+  text-align: center;
+}
+
+#contacto {
+  width: 33%;
+  text-align: right;
+}
+
+#contacto p {
+  margin: 6px 0;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 630px) {
+  footer {
+    display: block;
+    text-align: center;
+    padding: 15px 10px;
+  }
+
+  footer > div {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    text-align: center !important;
+  }
+
+  #contacto p {
+    margin: 4px 0;
+  }
+}

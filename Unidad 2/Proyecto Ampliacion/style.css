@@ -1,0 +1,19 @@
+body{
+    font-family: sans-serif;
+    background-color: beige;
+}
+
+/*table tr {*/
+/*    border: 1px solid black;*/
+/*}*/
+
+table #titulos {
+    color: gray;
+}
+
+footer > p {
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    color: gray;
+}

@@ -1,0 +1,13 @@
+<section class="servicios">
+  <h1 class="servicios-titulo">Nuestros Paquetes de Servicios</h1>
+  <div class="paquetes">
+
+    <div class="paquete" *ngFor="let serv of servicios">
+      <h2>{{serv.title}}</h2>
+      <p class="precio">{{ serv.precio }}</p>
+      <p>{{serv.description}}</p>
+      <button>Contratar</button>
+    </div>
+
+  </div>
+</section>

@@ -29,7 +29,7 @@ function ejercicio1() {
 /*
 ------------------------------------------------------------------------
 */
-//Helpers (comunes para todo el boletin)
+//Helpers (comunes para todoel boletin)
 function $inputvalue(id) {
     var input = document.getElementById(id);
     var result = "";

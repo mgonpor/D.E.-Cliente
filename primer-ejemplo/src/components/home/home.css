@@ -1,0 +1,30 @@
+.banner {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 16px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.banner-content {
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px 40px;
+  border-radius: 8px;
+}
+
+.banner h1 {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.banner p {
+  font-size: 1.3rem;
+}
