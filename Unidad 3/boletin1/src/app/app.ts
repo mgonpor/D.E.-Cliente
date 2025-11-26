@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -59,15 +60,23 @@ export class App {
   // Ejer 4
   public colores: string[] = ["rojo", "naranja", "verde", "azul", "amarillo"];
 
-  public eliminarVerde(): void {
-    console.log("Lista colores: " + this.colores);
-
-    let iVerde: number = this.colores.indexOf("verde");
-    if(iVerde > -1) {
-      this.colores.splice(iVerde, 1);
-    }
-
-    console.log("Lista colores sin verde: " + this.colores);
+  public eliminarColor(color: string): string[] {
+    return this.colores.filter(data => data !== color);
   }
 
+  // Ejer 5
+  public frutas: string[] = ["Aguacate", "Banana", "Chirimoya", "Dátil", "Fresa",
+    "Guayaba", "Kiwi", "Limón", "Naranja", "Pera", "Sandía", "Uva", "Yuca"];
+
+  public meterFruta(fruta: string): void {
+    let index = this.frutas.length;
+    for (let i = 0; i < this.frutas.length; i++) {
+      let v = (this.frutas[i] > fruta) ? -1 : 1;
+      if (v == 1){
+        index = i;
+        break;
+      }
+    }
+    this.frutas.splice(index, 0, fruta);
+  }
 }

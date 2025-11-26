@@ -252,7 +252,17 @@
       <h2>Ejercicio 4</h2>
       <p>Eliminar el color verde de un array que almacena cinco colores cualesquiera, entre
         ellos debe estar el verde.</p>
-      <button (click)="eliminarVerde()">Eliminar verde</button>
+
+      <ul *ngFor="let color of eliminarColor('verde')">
+        <li>{{color}}</li>
+      </ul>
+      <br><br>
+
+      <h2>Ejercicio 5</h2>
+      <p>Supon un array ordenado alfabéticamente de frutas. (Aguacate, Banana, Chirimoya,
+        Dátil, Fresa, Guayaba, Kiwi, Limón, Naranja, Pera, Sandía, Uva, Yuca). Introduce el
+        melón de forma que el orden se mantenga usando splice.</p>
+      <button (click)="meterFruta('Melón')">Meter Melón</button>
       <br><br>
 
 
