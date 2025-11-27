@@ -148,11 +148,31 @@ export class App {
   public lista: Array<any> = ["Pepe", "Maria", "Pepe", "Juan", "Maria", "Pepe"];
 
   public eliminaDuplicados(l: Array<any>): Array<any> {
-    let s: Set<any> = new Set();
-    s.add([...l]);
+    let s: Set<any> = new Set([...l]);
     let array: Array<any> = Array(...s);
     console.log(array);
     return array;
+  }
+
+  // Ejer 14
+  public numeros10: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  public numeros15: Array<number> = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  public numeros20: Array<number> = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+  public unirNumeros(): void {
+    let s: Set<number> = new Set([...this.numeros10, ...this.numeros15, ...this.numeros20]);
+    console.log(s);
+  }
+
+
+  public listin_telefonico(): Map<string, string>{
+    let listin: Map<string, string> = new Map<string, string>();
+
+    listin.set("Juan", "666777888");
+    listin.set("Pepe", "777888999");
+    listin.set("Maria", "888999111");
+
+    return listin;
   }
 
 }

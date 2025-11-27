@@ -290,6 +290,29 @@
       <button (click)="eliminaDuplicados(lista)">eliminaDuplicados</button>
       <br><br>
 
+      <h2>Ejercicio 14</h2>
+      <p>Crea un array con los números del 1 al 10, otro con los números del 5 al 15 y por
+        último otro con los números del 10 al 20. Realiza una unión de todos los arrays en
+        un conjunto y muestra su resultado. ¿Qué ha ocurrido?</p>
+      <button (click)="unirNumeros()">une numeros</button>
+      <br><br>
+
+      <h2>Ejercicio 15</h2>
+      <p>Inventa un listín telefónico de 10 personas de modo que no quieras memorizar sus
+        teléfonos, solo sus nombres y puedas en cualquier momento consultar el número de
+        teléfono de cada uno de ellos. Pinta el listín telefónico completo y el teléfono de una
+        persona en concreto. ¿Qué ocurre si consultas el teléfono de una persona que no se
+        encuentra dentro del listín? ¿Puede tener el mismo número de teléfono una
+        persona? ¿Puede una persona tener más de un teléfono?</p>
+      <ul>
+        @for (elem of listin_telefonico(); track $index){
+          <li>{{elem}}</li>
+        }
+      </ul>
+
+      <p>Valor de Juan: {{listin_telefonico().get("Juan")}}</p>
+
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
