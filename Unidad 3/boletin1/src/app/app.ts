@@ -164,7 +164,7 @@ export class App {
     console.log(s);
   }
 
-
+  // Ejer 15
   public listin_telefonico(): Map<string, string>{
     let listin: Map<string, string> = new Map<string, string>();
 
