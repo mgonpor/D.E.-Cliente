@@ -23,4 +23,20 @@ export class Alumno {
   set fechaNac(fechaNac: Date) { this._fechaNac = fechaNac; };
   set direccion(direccion: Direccion) { this._direccion = direccion; };
 
+  get edad(): number {
+    const hoy = new Date();
+    let edad = hoy.getFullYear() - this._fechaNac.getFullYear();
+    const mes = hoy.getMonth() - this._fechaNac.getMonth();
+
+    // Si el mes actual es anterior al mes de nacimiento, o si es el mismo mes pero el día actual es anterior al día de nacimiento, se resta 1 a la edad
+    if (mes < 0 || (mes === 0 && hoy.getDate() < this._fechaNac.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+
+  get iniciales(): string {
+    return "";
+  }
+
 }
