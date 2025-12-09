@@ -21,4 +21,8 @@ export class Profesor {
   set telefono(dni: string) { this._telefono = dni; };
   set salarioBruto(salarioBruto: number) { this._salarioBruto = salarioBruto; };
 
+  public getsalarioNeto(irpf: number): number {
+    return this._salarioBruto * (1 - irpf);
+  }
+
 }

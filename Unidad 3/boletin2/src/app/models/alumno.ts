@@ -36,7 +36,12 @@ export class Alumno {
   }
 
   get iniciales(): string {
-    return "";
+    let result: string = this._nombre.substring(0,1);
+    let apellidos: string[] = this._apellidos.split(' ');
+    apellidos.forEach(apellido => {
+      result += apellido.substring(0,1);
+    });
+    return result.toUpperCase();
   }
 
 }
