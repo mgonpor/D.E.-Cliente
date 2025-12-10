@@ -15,9 +15,9 @@ export class App {
   public precios: number[] = [12.50, 7.99, 4.98, 19.75];
 
   public alumnos: Alumno[] = [
-    new Alumno("Antonio", "Perez Garcia", new Date("2001-10-20"), [7, 8, 5]),
-    new Alumno("Juan", "Gonzalez Portillo", new Date("1998-02-28"), [4, 5, 10]),
-    new Alumno("Ana", "Lopez Lopez", new Date("1999-08-01"), [9, 8, 8])
+    new Alumno("Antonio", "Perez Garcia", new Date("2001-10-20"), 7, 10, 5),
+    new Alumno("Juan", "Gonzalez Portillo", new Date("1998-02-28"), 4, 5, 8),
+    new Alumno("Ana", "Lopez Lopez", new Date("1999-08-01"), 9, 8, 8)
   ];
 
   ngOnInit(): void {
@@ -65,17 +65,38 @@ export class App {
 
   // Act 7
   public ejer7a(): void {
+    const todasLasNotas: number[] = this.alumnos.flatMap(a => [a.nota1, a.nota2, a.nota3]);
 
+    let recuentoNotas: Map<number, number> = new Map();
+    let valorMaximo: number = 0;
+    let claveMaxima: number = 0;
+
+    for (let n of todasLasNotas) {
+      recuentoNotas.set(n, (recuentoNotas.get(n) || 0) + 1);
+    }
+    for (let [k, v] of recuentoNotas){
+      if(v > valorMaximo){
+        valorMaximo = v;
+        claveMaxima = k;
+      }
+    }
+
+    console.log("La moda es " + claveMaxima);
   }
 
   public ejer7b(): void {
-    console.log("Media de todos: " + (this.alumnos
-      .map(a => a.media)
-      .reduce((a, n) => a + n)
-    / this.alumnos.length).toFixed(2));
+    const todasLasNotas: number[] = this.alumnos.flatMap(a => [a.nota1, a.nota2, a.nota3]);
+    console.log("Media: " + (todasLasNotas.reduce((a, n) => a + n)/todasLasNotas.length).toFixed(2));
   }
 
   public ejer7c(): void {
+    const todasLasNotas: number[] = this.alumnos.flatMap(a => [a.nota1, a.nota2, a.nota3]).filter(a => a >= 5);
+    console.log("Media notas aprobadas: " + (todasLasNotas.reduce((a, n) => a + n) / todasLasNotas.length).toFixed(2));
+  }
 
+  public ejer7d(): void {
+    const anioMax: number = 2000;
+    const todasLasNotas: number[] = this.alumnos.filter(a => a.fechaNac.getUTCFullYear() < anioMax).flatMap(a => [a.nota1, a.nota2, a.nota3]);
+    console.log("Nota más alta anterior al 2000: " + todasLasNotas.sort((a, b) => b - a)[0]);
   }
 }

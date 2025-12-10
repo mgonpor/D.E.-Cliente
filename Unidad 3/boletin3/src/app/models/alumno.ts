@@ -4,21 +4,27 @@ export class Alumno {
     private _nombre: string,
     private _apellidos: string,
     private _fechaNac: Date,
-    private _notas: number[]
+    private _nota1: number,
+    private _nota2: number,
+    private _nota3: number
   ) {};
 
   get nombre(): string { return this._nombre; };
   get apellidos(): string { return this._apellidos; };
   get fechaNac(): Date { return this._fechaNac; };
-  get notas(): number[] { return this._notas; };
+  get nota1(): number { return this._nota1; };
+  get nota2(): number { return this._nota2; };
+  get nota3(): number { return this._nota3; };
 
   set nombre(nombre: string) { this._nombre = nombre; };
   set apellidos(apellidos: string) { this._apellidos = apellidos; };
   set fechaNac(fechaNac: Date) { this._fechaNac = fechaNac; }
-  set notas(notas: number[]) { this._notas = notas; };
+  set nota1(nota1: number) { this._nota1 = nota1; };
+  set nota2(nota2: number) { this._nota2 = nota2; };
+  set nota3(nota3: number) { this._nota3 = nota3; };
 
   get media(): number {
-    return this._notas.reduce((acum, n) => acum + n) / this._notas.length;
+    return (this.nota1 + this.nota2 + this.nota3) / 3;
   }
 
 }
