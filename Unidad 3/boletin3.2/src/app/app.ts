@@ -9,4 +9,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('boletin3.2');
+
+  public iniciarApp(): void {
+    console.log('Iniciando App...');
+
+  }
 }
