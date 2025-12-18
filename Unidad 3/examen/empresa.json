@@ -1,0 +1,16 @@
+{
+  "nombre": "Los Alcores INC",
+  "num_empleados": 50,
+  "convenios": [{
+      "fecha_inicio": "2025-02-16",
+      "fecha_fin": "2026-06-01",
+      "alumnos": [{
+          "nombre": "Juan",
+          "apellidos": "Pérez Alcaide",
+          "fecha_nacimiento": "2005-01-01",
+          "email": "juanpa@email.com",
+          "nota_final": 8.2
+      }],
+      "num_horas": 2
+  }]
+}
