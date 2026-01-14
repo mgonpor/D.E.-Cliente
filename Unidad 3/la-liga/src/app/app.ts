@@ -19,30 +19,30 @@ export class App {
     goalsVisitor: null as number | null
   };
 
-  protected readonly validationMessage = signal<{ text: string, type: 'error' | 'success' | '' }>({ text: '', type: '' });
+  protected readonly validacion = signal<{ text: string, type: 'error' | 'success' | '' }>({ text: '', type: '' });
 
   addMatch(): void {
     const { local, visitor, goalsLocal, goalsVisitor } = this.matchForm;
 
     if (!local || !visitor || goalsLocal === null || goalsVisitor === null) {
-      this.validationMessage.set({ text: 'Por favor, rellena todos los campos.', type: 'error' });
+      this.validacion.set({ text: 'Por favor, rellena todos los campos.', type: 'error' });
       return;
     }
 
     if (local === visitor) {
-      this.validationMessage.set({ text: 'Los equipos no pueden ser iguales.', type: 'error' });
+      this.validacion.set({ text: 'Los equipos no pueden ser iguales.', type: 'error' });
       return;
     }
 
     if (goalsLocal < 0 || goalsVisitor < 0) {
-      this.validationMessage.set({ text: 'Los goles no pueden ser negativos.', type: 'error' });
+      this.validacion.set({ text: 'Los goles no pueden ser negativos.', type: 'error' });
       return;
     }
 
     this.leagueService.addMatch(local, visitor, goalsLocal, goalsVisitor);
-    this.validationMessage.set({ text: 'Partido añadido correctamente.', type: 'success' });
+    this.validacion.set({ text: 'Partido añadido correctamente.', type: 'success' });
 
-    // Reset form
+    // Reiniciar formulario
     this.matchForm.local = '';
     this.matchForm.visitor = '';
     this.matchForm.goalsLocal = null;

@@ -20,15 +20,15 @@ export class LeagueService {
 
     readonly teams = computed(() => {
         return [...this._teams()].sort((a, b) => {
-            // Points
+            // Puntos
             if (a.points !== b.points) return b.points - a.points;
 
-            // Goal Difference
+            // Diferencia de goles
             const diffA = a.goalsFor - a.goalsAgainst;
             const diffB = b.goalsFor - b.goalsAgainst;
             if (diffA !== diffB) return diffB - diffA;
 
-            // Goals For
+            // Goles a favor
             return b.goalsFor - a.goalsFor;
         });
     });
@@ -40,17 +40,17 @@ export class LeagueService {
             const visitor = newTeams.find(t => t.name === visitorName);
 
             if (local && visitor) {
-                // Update goals
+                // Actualizar goles
                 local.goalsFor += goalsLocal;
                 local.goalsAgainst += goalsVisitor;
                 visitor.goalsFor += goalsVisitor;
                 visitor.goalsAgainst += goalsLocal;
 
-                // Update matches played
+                // Actualizar partidos jugados
                 local.played += 1;
                 visitor.played += 1;
 
-                // Update won/lost/drawn and points
+                // Actualizar ganados/perdidos/empatados y puntos
                 if (goalsLocal > goalsVisitor) {
                     local.won += 1;
                     visitor.lost += 1;
@@ -62,7 +62,7 @@ export class LeagueService {
                     visitor.drawn += 1;
                 }
 
-                // Recalculate points
+                // Recalcular puntos
                 local.points = (local.won * 3) + local.drawn;
                 visitor.points = (visitor.won * 3) + visitor.drawn;
             }
