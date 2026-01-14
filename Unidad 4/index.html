@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD.05 - Eventos y formularios</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>UD.05 - Eventos y formularios</h1>
+    <div>
+        <h3>Act 1</h3>
+        <p>Realizar un programa que cuente el número de clicks que hace un usuario sobre una
+            etiqueta concreta en HTML, por ejemplo un &lt;span&gt;
+        </p>
+        <span id="span1" style="background-color: red;">Click me</span>
+        <p id="p1">0</p>
+    </div>
+
+    <div>
+        <h3>Act 2</h3>
+        <p>Escribe un pequeño programa con el que captures el evento click sobre un elemento
+            y tengas acceso al objeto evento. Muestra la estructura del objeto en la consola
+            usando console.log() y repasa todas las propiedades y métodos que ofrece para que
+            tengas una comprensión completa de todo lo que contiene.
+        </p>
+        <span id="span2" style="background-color: red;">Click me</span>
+    </div>
+
+    <div>
+        <h3>Act 3</h3>
+        <p>Escribe un programa que permita conocer la posición que ocupaba el ratón cuando
+            hagas click en cualquier parte del documento.
+        </p>
+        <p id="p3">Haz click en cualquier lado</p>
+    </div>
+
+    <div>
+        <h3>Act 4.1</h3>
+        <p>Realiza un programa que, al pulsar sobre un elemento del tipo &lt;span&gt;, que se
+            encuentra dentro de un párrafo &lt;p&gt; y éste, a su vez, dentro de un elemento de tipo
+            &lt;section&gt; muestre en orden natural la propagación de eventos.
+        </p>
+        <section id="section4.1">
+            Sección
+            <p id="p4.1">
+                Párrafo
+                <span id="span4.1" style="background-color: red;">Click me</span>
+            </p>
+        </section>
+    </div>
+
+    <div>
+        <h3>Act 4.2</h3>
+        <p>Modifica el código anterior para que realice la propagación inversa.
+        </p>
+        <section id="section4.2">
+            Sección
+            <p id="p4.2">
+                Párrafo
+                <span id="span4.2" style="background-color: red;">Click me</span>
+            </p>
+        </section>
+    </div>
+
+    <div>
+        <h3>Act 5</h3>
+        <p>Realiza dentro de un &lt;section&gt; un enlace a una web determinada. Realiza un
+            lanzamiento de eventos para que el enlace solo pueda ser accedido pulsando sobre
+            un span que indique el comportamiento “Abrir enlace anterior”
+        </p>
+        <section id="section5">
+            <a id="a5" href="https://www.google.com">Ir a Google</a>
+            <span id="span5" style="background-color: red;">Abrir enlace anterior</span>
+        </section>
+    </div>
+
+    <div>
+        <h3>Act 6</h3>
+        <p>Realiza un formulario para introducir los datos de un cliente. Este formulario debe
+            estar compuesto por nombre y apellidos y además tendrá un botón de tipo check,
+            que solo en caso de que se marque mostrará los controles de formulario para
+            introducir teléfono y email.
+        </p>
+        <form id="form6">
+            <label for="nombre6">Nombre</label>
+            <input type="text" id="nombre6">
+            <label for="apellidos6">Apellidos</label>
+            <input type="text" id="apellidos6">
+            <label for="checkbox6">Mostrar telefono y email</label>
+            <input type="checkbox" id="checkbox6">
+            <section id="section6" hidden>
+                <label for="telefono6">Telefono</label>
+                <input type="text" id="telefono6">
+                <label for="email6">Email</label>
+                <input type="text" id="email6">
+            </section>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <div>
+        <h3>Act 7</h3>
+        <p>Realiza la validación de un formulario haciendo uso del evento asociado al envío
+            para que el campo, nombre, apellidos y teléfono (en caso de estar marcado) no
+            puedan ser nulos además de que el email tenga un formato correcto.
+        </p>
+        <p id="p7">Haz click en enviar del ejercicio anterior.</p>
+    </div>
+</body>
+
+</html>
