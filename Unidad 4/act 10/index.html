@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Drag & Drop</title>
+    <script src="script.js"></script>
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+        }
+        .contenedor {
+            display: flex;
+            height: 100%;
+        }
+
+        .columna {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .todo {
+            background-color: lightsalmon;
+        }
+
+        .doing {
+            background-color: lightblue;
+        }
+
+        .done {
+            background-color: lightgreen;
+        }
+
+        #btn-add {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: blue;
+            color: white;
+            border-color: white;
+            cursor: pointer;
+            font-size: 32px;
+        }
+
+        #btn-add:hover {
+            background-color: darkblue;
+        }
+
+        .task {
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: grab;
+        }
+
+        .task:hover {
+            transform: translateY(-1px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="columna todo" id="todo">
+            <p>Por hacer</p>
+        </div>
+        <div class="columna doing" id="doing">
+            <p>En proceso</p>
+        </div>
+        <div class="columna done" id="done">
+            <p>Hecho</p>
+        </div>
+    </div>
+
+    <button id="btn-add"> + </button>
+
+</body>
