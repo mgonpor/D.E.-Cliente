@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tablero de Trabajo",
+        "fondo": "#3498db"
+    },
+    {
+        "id": 2,
+        "nombre": "Proyecto Personal",
+        "fondo": "#2ecc71"
+    },
+    {
+        "id": 3,
+        "nombre": "Planificación de Viaje",
+        "fondo": "#e74c3c"
+    }
+]
