@@ -10,14 +10,13 @@ import { TableroService } from '../../services/tablero-service';
 })
 export class Board implements OnInit {
 
-  public tableros: Tablero[] = [];
+  // Databinding a través de esta variable
+  public tableros?: Tablero[];
 
   constructor(private tableroService: TableroService) { }
 
   ngOnInit(): void {
-    this.tableroService.getTableros().subscribe(data => {
-      this.tableros = data;
-    });
+    this.tableros = this.tableroService.findAll();
   }
 
 }

@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Tablero } from '../models/tablero';
 
 @Injectable({
@@ -8,12 +6,32 @@ import { Tablero } from '../models/tablero';
 })
 export class TableroService {
 
-  private url = "mocks_json/tableros.json";
+  private tableros: Tablero[] = this.initData();
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  getTableros(): Observable<Tablero[]> {
-    return this.http.get<Tablero[]>(this.url);
+  private initData(): Tablero[] {
+
+    this.tableros = [];
+
+    const tablero1 = new Tablero(1, "Proyecto Alpha", "#15f24f");
+    const tablero2 = new Tablero(2, "Proyecto Beta", "#2458df");
+    const tablero3 = new Tablero(3, "Proyecto Gamma", "#3a1fde");
+    const tablero4 = new Tablero(4, "Proyecto Delta", "#adb24e");
+    const tablero5 = new Tablero(5, "Proyecto Epsilon", "#f35f23");
+    const tablero6 = new Tablero(6, "Proyecto Zeta", "#a4e243");
+
+    this.tableros.push(tablero1, tablero2, tablero3, tablero4, tablero5, tablero6);
+
+    return this.tableros;
+  }
+
+  public findAll(): Tablero[] {
+    return this.tableros;
+  }
+
+  public findById(id: number): Tablero {
+    return this.tableros.filter(tablero => tablero.id === id)[0];
   }
 
 }
