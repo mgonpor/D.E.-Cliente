@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Tablero } from '../../models/tablero';
 import { TableroService } from '../../services/tablero-service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-board',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './board.html',
   styleUrl: './board.css',
 })

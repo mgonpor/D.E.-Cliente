@@ -14,7 +14,7 @@ export class TableroService {
 
     this.tableros = [];
 
-    const tablero1 = new Tablero(1, "Proyecto Alpha", "#15f24f");
+    const tablero1 = new Tablero(1, "Proyecto Alpha", "#15ccc3");
     const tablero2 = new Tablero(2, "Proyecto Beta", "#2458df");
     const tablero3 = new Tablero(3, "Proyecto Gamma", "#3a1fde");
     const tablero4 = new Tablero(4, "Proyecto Delta", "#adb24e");
@@ -32,6 +32,14 @@ export class TableroService {
 
   public findById(id: number): Tablero {
     return this.tableros.filter(tablero => tablero.id === id)[0];
+  }
+
+  public autoIncrementId(): number {
+    return this.tableros.length + 1;
+  }
+
+  public save(tablero: Tablero): void {
+    this.tableros.push(tablero);
   }
 
 }
