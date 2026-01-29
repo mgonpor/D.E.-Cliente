@@ -43,4 +43,10 @@ export class ColumnaService {
     return this.columnas.filter(columna => columna.tablero.id === tableroId);
   }
 
+  public findByTableroIdAndColumnaId(tableroId: number, columnaId: number): Columna {
+    const c: Columna = this.columnas.filter(columna => columna.tablero.id === tableroId && columna.id === columnaId)[0];
+    console.log(c);
+    return c;
+  }
+
 }

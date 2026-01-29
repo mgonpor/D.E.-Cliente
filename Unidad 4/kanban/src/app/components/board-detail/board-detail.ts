@@ -4,10 +4,12 @@ import { Tablero } from '../../models/tablero';
 import { TableroService } from '../../services/tablero-service';
 import { ActivatedRoute } from '@angular/router';
 import { ColumnaService } from '../../services/columna-service';
+import { Task } from "../task/task";
+import { TareaService } from '../../services/tarea-service';
 
 @Component({
   selector: 'app-board-detail',
-  imports: [],
+  imports: [Task],
   templateUrl: './board-detail.html',
   styleUrl: './board-detail.css',
 })
@@ -16,10 +18,13 @@ export class BoardDetail implements OnInit {
   public tablero?: Tablero;
   public columnas: Columna[] = [];
 
+  public trigger: number = 0;
+
   constructor(
     private tableroService: TableroService,
     private columnaService: ColumnaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tareaService: TareaService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +34,15 @@ export class BoardDetail implements OnInit {
     this.columnas = this.columnaService.findByTableroId(
       this.tablero!.id
     );
+  }
+
+  dragOver(event: DragEvent) {
+    event.preventDefault();
+  }
+
+  drop(columna: Columna) {
+    this.tareaService.ponerTarea(columna);
+    this.trigger++;
   }
 
 }
