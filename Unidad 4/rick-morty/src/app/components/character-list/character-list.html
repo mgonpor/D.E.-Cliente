@@ -1,5 +1,7 @@
+<h1>Personajes de Rick y Morty</h1>
 @for (char of characters; track char.id) {
-<div>
+<div class="character-div">
+    <img src="{{ char.image }}" alt="{{ char.name }}" />
     <p>{{ char.name }}</p>
 </div>
 }
