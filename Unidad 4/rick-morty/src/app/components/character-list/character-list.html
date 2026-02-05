@@ -1,6 +1,6 @@
 <h1>Personajes de Rick y Morty</h1>
-@for (char of characters; track char.id) {
-<div class="character-div">
+@for (char of characters(); track char.id) {
+<div [routerLink]="['/character', char.id]" class="character-div">
     <img src="{{ char.image }}" alt="{{ char.name }}" />
     <p>{{ char.name }}</p>
 </div>

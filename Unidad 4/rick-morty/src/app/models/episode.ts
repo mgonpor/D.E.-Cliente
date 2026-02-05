@@ -9,4 +9,23 @@ export class Episode {
         private _created: Date
     ) { }
 
+    public get id(): number {
+        return this._id;
+    }
+    public get name(): string {
+        return this._name;
+    }
+    public get airDate(): string {
+        return this._airDate;
+    }
+    public get episode(): string {
+        return this._episode;
+    }
+    public get url(): string {
+        return this._url;
+    }
+    public get created(): Date {
+        return this._created;
+    }
+
 }

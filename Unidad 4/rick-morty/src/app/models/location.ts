@@ -9,4 +9,23 @@ export class Location {
         private _created: Date
     ) { }
 
+    public get id(): number {
+        return this._id;
+    }
+    public get name(): string {
+        return this._name;
+    }
+    public get type(): string {
+        return this._type;
+    }
+    public get dimension(): string {
+        return this._dimension;
+    }
+    public get url(): string {
+        return this._url;
+    }
+    public get created(): Date {
+        return this._created;
+    }
+
 }
