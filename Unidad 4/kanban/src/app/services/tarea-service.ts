@@ -24,7 +24,7 @@ export class TareaService {
     console.log(todo1);
     console.log(todo2);
 
-
+    // Solo se crean tareas para los tableros 1 y 2
     this.tareas = [
       new Tarea(1, "Tarea 1", "Descripcion 1", new Date(), todo1),
       new Tarea(2, "Tarea 2", "Descripcion 2", new Date(), todo1),

@@ -6,6 +6,6 @@ import { BoardNew } from './components/board-new/board-new';
 export const routes: Routes = [
     { path: '', component: Board },
     { path: 'tablero', component: Board },
-    { path: 'tablero/:id', component: BoardDetail },
-    { path: 'tablero-nuevo', component: BoardNew }
+    { path: 'tablero/nuevo', component: BoardNew },
+    { path: 'tablero/:id', component: BoardDetail }
 ];

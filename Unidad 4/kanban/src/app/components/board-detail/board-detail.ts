@@ -32,7 +32,7 @@ export class BoardDetail implements OnInit {
       Number(this.route.snapshot.paramMap.get('id'))
     );
     this.columnas = this.columnaService.findByTableroId(
-      this.tablero!.id
+      this.tablero?.id
     );
   }
 
