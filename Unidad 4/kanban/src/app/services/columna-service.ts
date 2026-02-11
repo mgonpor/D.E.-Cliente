@@ -50,8 +50,12 @@ export class ColumnaService {
     return c;
   }
 
-  private autoIncrement() {
+  public autoIncrement() {
     return this.columnas.length + 1;
+  }
+
+  public save(columna: Columna) {
+    this.columnas.push(columna);
   }
 
   public crearColumnas(tablero: Tablero) {
