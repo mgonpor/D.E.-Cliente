@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Columna } from '../../models/columna';
 import { Tablero } from '../../models/tablero';
 import { TableroService } from '../../services/tablero-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ColumnaService } from '../../services/columna-service';
 import { Task } from "../task/task";
 import { TareaService } from '../../services/tarea-service';
 
 @Component({
   selector: 'app-board-detail',
-  imports: [Task],
+  imports: [Task, RouterLink],
   templateUrl: './board-detail.html',
   styleUrl: './board-detail.css',
 })

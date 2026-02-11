@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TableroService } from './tablero-service';
 import { Columna } from '../models/columna';
+import { Tablero } from '../models/tablero';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,16 @@ export class ColumnaService {
     const c: Columna = this.columnas.filter(columna => columna.tablero.id === tableroId && columna.id === columnaId)[0];
     console.log(c);
     return c;
+  }
+
+  private autoIncrement() {
+    return this.columnas.length + 1;
+  }
+
+  public crearColumnas(tablero: Tablero) {
+    this.columnas.push(new Columna(this.autoIncrement(), "En Progreso", "#23624f", tablero));
+    this.columnas.push(new Columna(this.autoIncrement(), "En Espera", "#f23411", tablero));
+    this.columnas.push(new Columna(this.autoIncrement(), "Completado", "#15f24f", tablero));
   }
 
 }
