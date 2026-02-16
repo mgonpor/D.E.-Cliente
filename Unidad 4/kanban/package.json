@@ -1,5 +1,5 @@
 {
-  "name": "kanban",
+  "name": "proyecto-kanban",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:kanban": "node dist/kanban/server/server.mjs"
+    "serve:ssr:proyecto-kanban": "node dist/proyecto-kanban/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -23,23 +23,24 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^21.1.0",
-    "@angular/compiler": "^21.1.0",
-    "@angular/core": "^21.1.0",
-    "@angular/forms": "^21.1.0",
-    "@angular/platform-browser": "^21.1.0",
-    "@angular/platform-server": "^21.1.0",
-    "@angular/router": "^21.1.0",
-    "@angular/ssr": "^21.1.0",
+    "@angular/cdk": "^20.2.0",
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/platform-server": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "@angular/ssr": "^20.3.10",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.1.0",
-    "@angular/cli": "^21.1.0",
-    "@angular/compiler-cli": "^21.1.0",
+    "@angular/build": "^20.3.10",
+    "@angular/cli": "^20.3.10",
+    "@angular/compiler-cli": "^20.3.0",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",

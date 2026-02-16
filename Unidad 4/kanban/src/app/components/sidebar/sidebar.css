@@ -1,0 +1,179 @@
+.sidebar {
+    width: 280px;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+    padding: 2.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    z-index: 40;
+    /* Adapting to be contained */
+    /* Position sticky handled by layout */
+}
+
+.sidebar-title {
+    font-family: var(--font-titles);
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    padding-left: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.sidebar-nav {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.nav-item {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background: #f3f4f6;
+    color: #111827;
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background: #eef2ff;
+    color: #6366f1;
+}
+
+.delete-btn-mini {
+    padding: 4px;
+    border-radius: 6px;
+    border: none;
+    background: #fee2e2;
+    color: #ef4444;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn-mini:hover {
+    background: #fecaca;
+    transform: scale(1.1);
+}
+
+.btn-add-sidebar {
+    margin-top: 1rem;
+    border: 2px dashed #6366f1;
+    background: #f0f4ff;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #4f46e5;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.btn-add-sidebar:hover {
+    background: #e0e7ff;
+    transform: translateY(-2px);
+}
+
+/* Modal styles need to be included or global. 
+   Assuming they were local to Board, copying them here or we'll move them to global styles later. */
+.modal-backdrop-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-custom {
+    background: white;
+    border-radius: 32px;
+    padding: 3.5rem;
+    width: 520px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.modal-actions-custom {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.25rem;
+}
+
+.btn-primary-custom {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 16px;
+    font-weight: 800;
+    background: #6366f1;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-primary-custom:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.btn-secondary-custom {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 16px;
+    font-weight: 800;
+    background: #f3f4f6;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-secondary-custom:hover {
+    background: #e5e7eb;
+}
+
+.input-custom {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #f1f5f9;
+    border-radius: 14px;
+    outline: none;
+    font-family: inherit;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s;
+}
+
+.input-custom:focus {
+    border-color: #6366f1;
+}

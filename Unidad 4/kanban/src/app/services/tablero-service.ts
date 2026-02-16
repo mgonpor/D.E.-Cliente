@@ -1,42 +1,214 @@
 import { Injectable } from '@angular/core';
 import { Tablero } from '../models/tablero';
+import { Columna } from '../models/columna';
+import { Tarea } from '../models/tarea';
+import { Usuario } from '../models/usuario';
+
+export const COLORS = {
+  trabajo: '#3b82f6',
+  pendientes: '#FF6A47',
+  progreso: '#6687FF',
+  completadas: '#00D9A5'
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class TableroService {
+  private _tableros: Tablero[] = [];
+  private _columnas: Columna[] = [];
+  private _tareas: Tarea[] = [];
 
-  private tableros: Tablero[] = this.initData();
-
-  constructor() { }
-
-  private initData(): Tablero[] {
-
-    this.tableros = [];
-
-    const tablero1 = new Tablero(1, "Proyecto Alpha", "#15ccc3");
-    const tablero2 = new Tablero(2, "Proyecto Beta", "#2458df");
-    const tablero3 = new Tablero(3, "Proyecto Gamma", "#3a1fde");
-
-    this.tableros.push(tablero1, tablero2, tablero3);
-
-    return this.tableros;
+  constructor() {
+    this.loadFromStorage();
+    if (this._tableros.length === 0) {
+      this.initData();
+      this.saveToStorage();
+    }
   }
 
-  public findAll(): Tablero[] {
-    return this.tableros;
+  generateId(): number {
+    return Date.now() + Math.floor(Math.random() * 1000);
   }
 
-  public findById(id: number): Tablero {
-    return this.tableros.filter(tablero => tablero.id === id)[0];
+  private initData(): void {
+    // Initial Data with static IDs for consistency on first run
+    const tablero1: Tablero = { id: 1, nombre: 'Trabajo', descripcion: 'Proyectos de la empresa', fondo: COLORS.trabajo };
+    this._tableros = [tablero1];
+
+    const col1: Columna = { id: 11, nombre: 'Pendientes', color: COLORS.pendientes, tablero: tablero1 };
+    const col2: Columna = { id: 12, nombre: 'En Progreso', color: COLORS.progreso, tablero: tablero1 };
+    const col3: Columna = { id: 13, nombre: 'Completadas', color: COLORS.completadas, tablero: tablero1 };
+
+    this._columnas = [col1, col2, col3];
+
+    const usuario1: Usuario = { id: 1, nombre: 'Fran', apellido: 'Vergara', email: 'fran@example.com' };
+
+    this._tareas = [
+      { id: 101, nombre: 'Diseñar UI', descripcion: 'Diseñar la interfaz del tablero', fecha_creacion: new Date(), estimacion: 5, columna: col1, usuario: usuario1 },
+      { id: 102, nombre: 'Implementar Modelos', descripcion: 'Crear las interfaces TS', fecha_creacion: new Date(), estimacion: 3, columna: col2, usuario: usuario1 },
+      { id: 103, nombre: 'Configurar Angular', descripcion: 'Inicializar el proyecto', fecha_creacion: new Date(), estimacion: 2, columna: col3, usuario: usuario1 },
+    ];
   }
 
-  public autoIncrementId(): number {
-    return this.tableros.length + 1;
+  private saveToStorage(): void {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('kanban_tableros', JSON.stringify(this._tableros));
+      localStorage.setItem('kanban_columnas', JSON.stringify(this._columnas));
+      localStorage.setItem('kanban_tareas', JSON.stringify(this._tareas));
+    }
   }
 
-  public save(tablero: Tablero): void {
-    this.tableros.push(tablero);
+  private loadFromStorage(): void {
+    if (typeof localStorage !== 'undefined') {
+      const t = localStorage.getItem('kanban_tableros');
+      const c = localStorage.getItem('kanban_columnas');
+      const tar = localStorage.getItem('kanban_tareas');
+
+      if (t) this._tableros = JSON.parse(t);
+      if (c) this._columnas = JSON.parse(c);
+      if (tar) this._tareas = JSON.parse(tar);
+
+      // Sync default colors with code constants
+      const mainBoard = this._tableros.find(b => b.id === 1);
+      if (mainBoard) mainBoard.fondo = COLORS.trabajo;
+
+      this._columnas.forEach(col => {
+        if (col.id === 11) col.color = COLORS.pendientes;
+        if (col.id === 12) col.color = COLORS.progreso;
+        if (col.id === 13) col.color = COLORS.completadas;
+      });
+    }
   }
 
+  // --- Public API ---
+
+  getTableros(): Tablero[] {
+    return this._tableros;
+  }
+
+  getTableroById(id: number): Tablero | undefined {
+    return this._tableros.find(t => t.id === id);
+  }
+
+  createTablero(nombre: string, descripcion: string, color: string): Tablero {
+    const nuevo: Tablero = {
+      id: this.generateId(),
+      nombre,
+      descripcion,
+      fondo: color
+    };
+    this._tableros.push(nuevo);
+
+    // Default columns
+    this.createColumna(nuevo.id, 'Por Hacer', COLORS.pendientes);
+    this.createColumna(nuevo.id, 'En Proceso', COLORS.progreso);
+    this.createColumna(nuevo.id, 'Realizado', COLORS.completadas);
+
+    this.saveToStorage();
+    return nuevo;
+  }
+
+  deleteTablero(id: number): void {
+    this._tableros = this._tableros.filter(t => t.id !== id);
+    this._columnas = this._columnas.filter(c => c.tablero.id !== id);
+    this._tareas = this._tareas.filter(tar => this._columnas.some(c => c.id === tar.columna.id));
+    this.saveToStorage();
+  }
+
+  getColumnasByTableroId(tableroId: number): Columna[] {
+    return this._columnas.filter(c => c.tablero.id === tableroId);
+  }
+
+  getTareasColumna(columnaId: number): Tarea[] {
+    return this._tareas.filter(tarea => tarea.columna.id === columnaId);
+  }
+
+  createColumna(tableroId: number, nombre: string, color: string): Columna | undefined {
+    const tablero = this.getTableroById(tableroId);
+    if (!tablero) return undefined;
+
+    const currentCols = this.getColumnasByTableroId(tableroId);
+    if (currentCols.length >= 5) {
+      alert('El límite de columnas por tablero es 5.');
+      return undefined;
+    }
+
+    const nueva: Columna = {
+      id: this.generateId(),
+      nombre,
+      color,
+      tablero
+    };
+    this._columnas.push(nueva);
+    this.saveToStorage();
+    return nueva;
+  }
+
+  deleteColumna(id: number): void {
+    this._columnas = this._columnas.filter(c => c.id !== id);
+    this._tareas = this._tareas.filter(t => t.columna.id !== id);
+    this.saveToStorage();
+  }
+
+  createTarea(columnaId: number, nombre: string, descripcion: string, estimacion: number, usuario: Usuario): Tarea | undefined {
+    const columna = this._columnas.find(c => c.id === columnaId);
+    if (!columna) return undefined;
+
+    const nueva: Tarea = {
+      id: this.generateId(),
+      nombre,
+      descripcion,
+      fecha_creacion: new Date(),
+      estimacion,
+      columna,
+      usuario
+    };
+    this._tareas.push(nueva);
+    this.saveToStorage();
+    return nueva;
+  }
+
+  deleteTarea(id: number): void {
+    this._tareas = this._tareas.filter(t => t.id !== id);
+    this.saveToStorage();
+  }
+
+  updateTareaColumna(tareaId: number, newColId: number): void {
+    const tarea = this._tareas.find(t => t.id === tareaId);
+    if (tarea) {
+      const newCol = this._columnas.find(c => c.id === newColId);
+      if (newCol) {
+        tarea.columna = newCol;
+        this.saveToStorage();
+      }
+    }
+  }
+
+  // --- Usuario CRUD ---
+
+  private _usuarios: Usuario[] = [
+    { id: 1, nombre: 'Francisco', apellido: 'Vergara', email: 'fran@example.com' },
+    { id: 2, nombre: 'Maria', apellido: 'Gonzalez', email: 'maria@example.com' },
+    { id: 3, nombre: 'Juan', apellido: 'Perez', email: 'juan@example.com' }
+  ];
+
+  getUsuarios(): Usuario[] {
+    return this._usuarios;
+  }
+
+  createUsuario(id: number, nombre: string, apellido: string, email: string): Usuario | undefined {
+    if (this._usuarios.some(u => u.id === id || u.email === email)) {
+      alert('El ID o Email del usuario ya existe.');
+      return undefined;
+    }
+    const nuevo: Usuario = { id, nombre, apellido, email };
+    this._usuarios.push(nuevo);
+    // Persist if using storage for users too? For now adhering to task requirement.
+    return nuevo;
+  }
+
+  deleteUsuario(id: number): void {
+    this._usuarios = this._usuarios.filter(u => u.id !== id);
+  }
 }
