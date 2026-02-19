@@ -1,22 +1,24 @@
 <div class="character-detail">
     @if (character().id) {
-        <img src="{{ character().image }}" alt="{{ character().name }}" />
-        <h2>{{ character().name }}</h2>
-        <p><strong>Especie:</strong> {{ character().species }}</p>
-        <p><strong>Género:</strong> {{ character().gender }}</p>
-        <p><strong>Estado:</strong> {{ character().status }}</p>
-        <p><strong>Tipo:</strong> {{ character().type || 'Desconocido' }}</p>
-        <p><strong>Origen:</strong> {{ character().origin.name }}</p>
-        <p><strong>Ubicación:</strong> {{ character().location.name }}</p>
-        <p><strong>Creado:</strong> {{ character().created }}</p>
-        <div class="episodes"><p><strong>Episodios:</strong></p>
-            <ul>
+    <img src="{{ character().image }}" alt="{{ character().name }}" />
+    <h2>{{ character().name }}</h2>
+    <p><strong>Especie:</strong> {{ character().species }}</p>
+    <p><strong>Género:</strong> {{ character().gender }}</p>
+    <p><strong>Estado:</strong> {{ character().status }}</p>
+    <p><strong>Tipo:</strong> {{ character().type || 'Desconocido' }}</p>
+    <p><strong>Origen:</strong> {{ character().origin.name }}</p>
+    <p><strong>Ubicación:</strong> {{ character().location.name }}</p>
+    <p><strong>Creado:</strong> {{ character().created }}</p>
+    <!--<div class="episodes">
+        <p><strong>Episodios:</strong></p>
+        <ul>
                 @for (ep of episodes; track ep.id) {
                     <li>{{ ep.name }}, {{ep.created}}, {{ep.episode}} </li>
-                }<!--Falla-->
+                }
             </ul>
-        </div>
+    </div>-->
+    <button (click)="goBack()">Go Back</button>
     }@else {
-        <p>El personaje no existe o no se pudo cargar.</p>
+    <p>El personaje no existe o no se pudo cargar.</p>
     }
 </div>
