@@ -1,4 +1,3 @@
-import { Episode } from "./episode";
 import { Location } from "./location";
 
 export class Character {
@@ -13,7 +12,7 @@ export class Character {
         private _origin: Location,
         private _location: Location,
         private _image: string,
-        private _episode: Episode[],
+        private _episode: string[],
         private _url: string,
         private _created: Date
     ) { }
@@ -72,10 +71,10 @@ export class Character {
     public set image(value: string) {
         this._image = value;
     }
-    public get episode(): Episode[] {
+    public get episode(): string[] {
         return this._episode;
     }
-    public set episode(value: Episode[]) {
+    public set episode(value: string[]) {
         this._episode = value;
     }
     public get url(): string {
@@ -89,18 +88,5 @@ export class Character {
     }
     public set created(value: Date) {
         this._created = value;
-    }
-
-    mapStringToEpisode(episodes: string[]): Episode[] {
-        return episodes.map(episode => {
-            return new Episode(
-                parseInt(episode.split('/').pop()!),
-                '',
-                '',
-                '',
-                episode,
-                new Date()
-            );
-        });
     }
 }

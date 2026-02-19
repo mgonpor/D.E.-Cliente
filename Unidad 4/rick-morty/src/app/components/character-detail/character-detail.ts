@@ -16,6 +16,8 @@ export class CharacterDetail {
   public character: Signal<Character>;
   public id: number;
 
+
+  // todo: EpisodeService para cargar los nombres mapeando entre Episode y string
   constructor(private _characterService: CharacterService, private _route: ActivatedRoute, private _location: Location) {
     this.id = this._route.snapshot.params['id'];
     this.character = toSignal(this._characterService.findById(this.id), { initialValue: {} as Character });
