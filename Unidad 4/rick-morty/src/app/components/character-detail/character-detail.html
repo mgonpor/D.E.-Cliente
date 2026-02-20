@@ -9,14 +9,16 @@
     <p><strong>Origen:</strong> {{ character().origin.name }}</p>
     <p><strong>Ubicación:</strong> {{ character().location.name }}</p>
     <p><strong>Creado:</strong> {{ character().created }}</p>
-    <!--<div class="episodes">
+    <div class="episodes">
         <p><strong>Episodios:</strong></p>
         <ul>
-                @for (ep of episodes; track ep.id) {
-                    <li>{{ ep.name }}, {{ep.created}}, {{ep.episode}} </li>
-                }
-            </ul>
-    </div>-->
+            @for (ep of character().episode; track ep) {
+            <li [routerLink]="['/episode', ep.split('/').pop()]"
+                style="cursor: pointer; color: blue; text-decoration: underline;">Episodio
+                {{ep.split('/').pop()}}</li>
+            }
+        </ul>
+    </div>
     <button (click)="goBack()">Go Back</button>
     }@else {
     <p>El personaje no existe o no se pudo cargar.</p>

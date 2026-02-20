@@ -8,10 +8,16 @@ import { Episode } from '../models/episode';
 })
 export class EpisodeService {
 
+  private readonly baseUrl = 'https://rickandmortyapi.com/api/episode';
+
   constructor(private _httpClient: HttpClient) { }
 
   findByUrl(url: string): Observable<Episode> {
     return this._httpClient.get<Episode>(url);
+  }
+
+  findById(id: number): Observable<Episode> {
+    return this._httpClient.get<Episode>(`${this.baseUrl}/${id}`);
   }
 
 }

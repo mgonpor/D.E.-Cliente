@@ -1,0 +1,10 @@
+<div class="episode-detail">
+    @if (episode().id){
+    <h2>{{episode().id}} - {{episode().name}}</h2>
+    <p><strong>Episode:</strong> {{episode().episode}}</p>
+    <p><strong>Air Date:</strong> {{episode().airDate}}</p>
+    <p><strong>Created:</strong> {{episode().created}}</p>
+    }@else{
+    <p>El episodio no existe o no se pudo cargar.</p>
+    }
+</div>
