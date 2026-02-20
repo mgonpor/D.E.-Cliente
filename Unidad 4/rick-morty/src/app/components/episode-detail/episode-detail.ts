@@ -19,7 +19,6 @@ export class EpisodeDetail {
   constructor(private _episodeService: EpisodeService, private _route: ActivatedRoute, private _location: Location) {
     this.id = this._route.snapshot.params['id'];
     this.episode = toSignal(this._episodeService.findById(this.id), { initialValue: {} as Episode });
-    console.log(this.episode().airDate);
   }
 
   goBack() {

@@ -6,7 +6,7 @@ export class Episode {
         private _airDate: string,
         private _episode: string,
         private _url: string,
-        private _created: Date
+        private _created: string
     ) { }
 
     public get id(): number {
@@ -24,7 +24,7 @@ export class Episode {
     public get url(): string {
         return this._url;
     }
-    public get created(): Date {
+    public get created(): string {
         return this._created;
     }
 
