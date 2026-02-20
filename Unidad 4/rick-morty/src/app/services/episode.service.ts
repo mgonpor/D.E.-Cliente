@@ -12,10 +12,6 @@ export class EpisodeService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  findByUrl(url: string): Observable<Episode> {
-    return this._httpClient.get<Episode>(url);
-  }
-
   findById(id: number): Observable<Episode> {
     return this._httpClient.get<Episode>(`${this.baseUrl}/${id}`);
   }

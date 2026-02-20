@@ -78,3 +78,13 @@ button {
   color: black;
   border-radius: 5px;
 }
+
+#location {
+  cursor: pointer;
+  color: blue;
+}
+
+#location:hover {
+  font-size: 1.1em;
+  font-weight: bold;
+}

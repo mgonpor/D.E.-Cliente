@@ -8,7 +8,8 @@
         <p><strong>Estado:</strong> {{ character().status }}</p>
         <p><strong>Tipo:</strong> {{ character().type || 'Desconocido' }}</p>
         <p><strong>Origen:</strong> {{ character().origin.name }}</p>
-        <p><strong>Ubicación:</strong> {{ character().location.name }}</p>
+        <p id="location" [routerLink]="['/location', character().location.id]"><strong>Ubicación:</strong> {{
+            character().location.name }}</p>
         <p><strong>Creado:</strong> {{ character().created }}</p>
     </div>
     <div class="episodes">

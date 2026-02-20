@@ -1,0 +1,13 @@
+<div class="location-detail">
+    @if (location().id) {
+    <div>
+        <h2>{{ location().name }}</h2>
+        <p><strong>Tipo:</strong> {{ location().type }}</p>
+        <p><strong>Dimensión:</strong> {{ location().dimension }}</p>
+        <p><strong>Creado:</strong> {{ location().created }}</p>
+    </div>
+    <button (click)="goBack()">Volver</button>
+    }@else {
+    <p>Esta localización no existe o no se ha podido cargar.</p>
+    }
+</div>
