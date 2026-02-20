@@ -4,5 +4,7 @@
     <p>{{ char.name }}</p>
 </div>
 }
-<button (click)="page(response().info.prev)">Anterior</button>
-<button (click)="page(response().info.next)">Siguiente</button>
+<div class="buttons">
+    <button (click)="page(response().info.prev)">Anterior</button>
+    <button (click)="page(response().info.next)">Siguiente</button>
+</div>

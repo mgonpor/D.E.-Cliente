@@ -6,12 +6,33 @@
     border-radius: 8px;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    max-width: 12rem;
 }
 
-button {
+.character-div img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    margin-top: 10px;
+    bottom: 0;
+    width: 100%;
+}
+
+.buttons button {
     display: inline-block;
-    width: 200px;
+    width: 150px;
     margin: 10px;
     justify-content: center;
     align-items: center;
+    background-color: #43ed2d;
+    color: black;
+    border-radius: 5px;
 }

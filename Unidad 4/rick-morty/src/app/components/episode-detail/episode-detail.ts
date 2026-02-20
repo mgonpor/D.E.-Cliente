@@ -3,6 +3,7 @@ import { Episode } from '../../models/episode';
 import { EpisodeService } from '../../services/episode.service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-episode-detail',
@@ -15,10 +16,14 @@ export class EpisodeDetail {
   public episode: Signal<Episode>;
   public id: number;
 
-  constructor(private _episodeService: EpisodeService, private _route: ActivatedRoute) {
+  constructor(private _episodeService: EpisodeService, private _route: ActivatedRoute, private _location: Location) {
     this.id = this._route.snapshot.params['id'];
     this.episode = toSignal(this._episodeService.findById(this.id), { initialValue: {} as Episode });
     console.log(this.episode().airDate);
+  }
+
+  goBack() {
+    this._location.back();
   }
 
 }
